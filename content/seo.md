@@ -8,7 +8,7 @@ Metadados da busca e cartões sociais (Open Graph/Twitter). Atualize título, de
   "title": "Caroline Casini | Clínica de Estética em São Paulo",
   "description": "Conheça a Caroline Casini Clínica de Estética. Procedimentos estéticos personalizados com cuidado, ciência, acolhimento e beleza natural.",
   "keywords": ["enfermeira esteta", "clínica de estética", "estética avançada", "procedimentos estéticos", "autocuidado", "São Paulo"],
-  "url": "https://www.seudominio.com.br/",
+  "url": "https://flaviobaptista.github.io/Caroline-Casini-Site/",
   "image": "img/logo_link_redes_sociais.png",
   "imageAlt": "Logo Caroline Casini Clínica de Estética",
   "robots": "index,follow"
