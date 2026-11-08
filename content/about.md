@@ -1,4 +1,5 @@
 # Sobre mim
+Ativo: sim
 
 O texto biográfico fornecido pela Caroline. Altere os parágrafos como texto normal dentro do bloco JSON, mantendo aspas e vírgulas.
 
@@ -22,7 +23,7 @@ O texto biográfico fornecido pela Caroline. Altere os parágrafos como texto no
     "Formação complementar em Enfermagem do Trabalho"
   ],
   "closing": "Será um prazer fazer parte da sua jornada de autocuidado.",
-  "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=85",
+  "image": "/img/ft2.png",
   "imageAlt": "Retrato ilustrativo de uma profissional da estética",
   "imageCaption": "Caroline Casini",
   "buttonLabel": "Vamos conversar",

@@ -1,4 +1,5 @@
 # Sobre a clínica
+Ativo: sim
 
 Descrição demonstrativa do ambiente. Troque as imagens e informações pelos dados reais do espaço.
 

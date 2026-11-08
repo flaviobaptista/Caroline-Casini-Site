@@ -1,4 +1,5 @@
 # Contato
+Ativo: sim
 
 Os contatos e o endereço base estão em `settings.md` para serem atualizados em um só lugar. Esta página inclui o mapa junto com as informações de contato.
 

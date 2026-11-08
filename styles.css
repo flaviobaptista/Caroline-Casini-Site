@@ -95,7 +95,7 @@ h3 { margin-bottom: 12px; font-size: var(--font-size-heading-card, clamp(23px, 2
 .hero-buttons { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
 .hero-note { display: flex; align-items: center; gap: 11px; margin-top: 36px; color: var(--muted); font-size: var(--font-size-compact, 13px); }
 .hero-note::before { width: 31px; height: 1px; background: var(--gold); content: ""; }
-.hero-visual { position: relative; min-height: 520px; }
+.hero-visual { position: relative; min-height: 720px; }
 .hero-photo-wrap { position: absolute; inset: 0 8% 3% 8%; overflow: hidden; border-radius: 48% 48% 6px 6px; background: var(--rose-soft); box-shadow: var(--shadow); }
 .hero-photo-wrap::after { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(30, 22, 20, .26)); content: ""; }
 .hero-photo { width: 100%; height: 100%; object-fit: cover; object-position: center 34%; transition: transform .18s linear; }
@@ -111,7 +111,7 @@ h3 { margin-bottom: 12px; font-size: var(--font-size-heading-card, clamp(23px, 2
 .soft-section { background: var(--subtle); }
 .split-layout { display: grid; grid-template-columns: minmax(260px, .9fr) minmax(0, 1.1fr); align-items: center; gap: clamp(38px, 8vw, 120px); }
 .split-layout.reverse { grid-template-columns: minmax(0, 1.1fr) minmax(260px, .9fr); }
-.editorial-image { position: relative; min-height: clamp(360px, 48vw, 630px); overflow: hidden; border-radius: 46% 46% 4px 4px; background: var(--rose-soft); }
+.editorial-image { position: relative; min-height: clamp(360px, 48vw, 830px); overflow: hidden; border-radius: 46% 46% 4px 4px; background: var(--rose-soft); }
 .editorial-image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .18s linear; }
 .editorial-image::after { position: absolute; inset: 0; border: 1px solid color-mix(in srgb, white 45%, transparent); border-radius: inherit; content: ""; pointer-events: none; }
 .image-label { position: absolute; right: -1px; bottom: 24px; z-index: 1; max-width: 230px; padding: 16px 20px; background: var(--surface); box-shadow: var(--shadow); color: var(--ink); font-family: var(--font-family-display, "Cormorant Garamond", Georgia, serif); font-size: var(--font-size-caption, 16px); }
@@ -121,6 +121,9 @@ h3 { margin-bottom: 12px; font-size: var(--font-size-heading-card, clamp(23px, 2
 .credential-list li { display: flex; align-items: center; gap: 11px; color: var(--ink); font-size: var(--font-size-copy, 14px); }
 .credential-list li::before { display: grid; width: 20px; height: 20px; flex: 0 0 20px; place-items: center; border-radius: 50%; background: var(--rose-soft); color: var(--gold-deep); content: "✓"; font-size: var(--font-size-micro, 11px); }
 .service-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.service-category + .service-category { margin-top: clamp(34px, 5vw, 58px); }
+.service-category-title { display: flex; align-items: center; gap: 13px; margin: 0 0 18px; color: var(--ink); font-size: clamp(24px, 2.4vw, 32px); }
+.service-category-title::after { width: min(110px, 12vw); height: 1px; background: var(--gold); content: ""; opacity: .7; }
 .service-card { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface); transition: transform .38s cubic-bezier(.2,.7,.2,1), box-shadow .38s ease, border-color .38s ease; }
 .service-card:hover { transform: translateY(-6px); border-color: var(--rose); box-shadow: var(--shadow); }
 .service-image { position: relative; aspect-ratio: 1.18; overflow: hidden; background: var(--rose-soft); }
@@ -128,7 +131,7 @@ h3 { margin-bottom: 12px; font-size: var(--font-size-heading-card, clamp(23px, 2
 .service-card:hover .service-image img { transform: translate3d(0, var(--parallax-y, 0px), 0) scale(1.12); }
 .service-number { position: absolute; top: 12px; left: 12px; display: grid; width: 33px; height: 33px; place-items: center; border: 1px solid rgba(255,255,255,.55); border-radius: 50%; background: rgba(255,253,249,.86); color: var(--gold-deep); font-family: var(--font-family-display, "Cormorant Garamond", Georgia, serif); font-size: var(--font-size-copy, 14px); }
 .service-body { padding: 20px 19px 22px; }
-.service-body h3 { margin-bottom: 9px; font-size: var(--font-size-heading-card, 21px); }
+.service-body h4 { margin-bottom: 9px; font-family: var(--font-family-display, "Cormorant Garamond", Georgia, serif); font-size: var(--font-size-heading-card, 21px); font-weight: 600; line-height: 1.12; }
 .service-body p { min-height: 58px; margin-bottom: 15px; color: var(--muted); font-size: var(--font-size-small, 12px); line-height: 1.65; }
 .service-body .text-link { font-size: var(--font-size-eyebrow, 11px); }
 .promo-band { position: relative; overflow: hidden; padding: clamp(35px, 6vw, 70px); border-radius: var(--radius-lg); background: linear-gradient(115deg, var(--rose-strong), var(--rose)); color: white; }
@@ -238,7 +241,7 @@ body[data-theme="dark"] .brand-mark { color: #fffdf8; }
   .nav-link { font-size: var(--font-size-navigation-large, 14px); }
   .service-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
   .product-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .service-body h3 { font-size: var(--font-size-heading-card-large, 25px); }
+  .service-body h4 { font-size: var(--font-size-heading-card-large, 25px); }
 }
 @media (min-width: 2800px) {
   :root { --content-width: min(2300px, 86vw); }
@@ -324,7 +327,7 @@ body[data-theme="dark"] .brand-mark { color: #fffdf8; }
   .section { padding-top: 72px; padding-bottom: 72px; }
   .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
   .service-body { padding: 14px 12px 16px; }
-  .service-body h3 { font-size: var(--font-size-heading-card-mobile, 18px); }
+  .service-body h4 { font-size: var(--font-size-heading-card-mobile, 18px); }
   .service-body p { min-height: 78px; font-size: var(--font-size-small, 12px); }
   .service-number { top: 8px; left: 8px; width: 28px; height: 28px; }
   .clinic-features, .product-grid { grid-template-columns: 1fr; }

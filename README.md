@@ -32,7 +32,7 @@ Cada arquivo de `content/` é Markdown com um bloco cercado por ```` ```json ```
 
 ### Ativar, ocultar e acrescentar itens
 
-- Para ocultar uma página sem apagar seu conteúdo, mude `"enabled": true` para `false` na página correspondente de `navigation.md`. Para escondê-la só do menu, use `"menu": false`.
+- Para ativar ou desativar uma página pronta sem apagar o conteúdo, mude a linha `Ativo: sim` para `Ativo: não` no início do arquivo correspondente em `content/` (por exemplo, `products.md`). A seção e o link do menu somem juntos; para reativar, volte para `Ativo: sim`. Para esconder uma página apenas do menu, use `"menu": false` em `navigation.md`. Páginas personalizadas continuam controladas por `"enabled"` em `navigation.md`.
 - Em `services.md`, `products.md` e `settings.md` (redes sociais), cada item também pode ser ocultado com `"enabled": false`. Exclua o objeto inteiro para removê-lo.
 - Para adicionar um serviço ou produto, copie um objeto existente dentro do respectivo array `items`, altere seus campos e mantenha a vírgula entre os objetos.
 - Para adicionar uma seção nova, acrescente em `navigation.md` um objeto com `id` único e sem espaços (por exemplo, `duvidas`), `label`, `type: "custom"`, `enabled: true` e `menu: true`. Acrescente `title`, `description`, `paragraphs` (lista de textos) e, se quiser, `image`, `imageAlt`, `buttonLabel` e `whatsappMessage` no mesmo objeto. `softBackground: true` dá fundo suave à seção.

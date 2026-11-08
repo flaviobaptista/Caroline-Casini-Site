@@ -8,7 +8,10 @@ async function readMarkdown(name) {
   const markdown = await response.text();
   const match = markdown.match(/```json\s*([\s\S]*?)```/i);
   if (!match) throw new Error(`O arquivo content/${name}.md precisa conter um bloco json.`);
-  return JSON.parse(match[1]);
+  const content = JSON.parse(match[1]);
+  const pageStatus = markdown.match(/^[ \t]*Ativo[ \t]*:[ \t]*(sim|não|nao)[ \t]*$/im);
+  if (pageStatus) content.pageActive = /^sim$/i.test(pageStatus[1]);
+  return content;
 }
 
 const escapeHTML = (value = "") => String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
@@ -36,8 +39,10 @@ function renderSocials(settings) {
   return (settings.socials || []).filter((item) => item.enabled !== false).map((item) => `<a class="social-link" href="${escapeHTML(safeUrl(item.url))}" aria-label="${escapeHTML(item.name)}" title="${escapeHTML(item.name)}" ${item.url?.startsWith("https:") ? 'target="_blank" rel="noopener noreferrer"' : ""}>${socialIcons[item.icon] || ""}</a>`).join("");
 }
 
-function renderNavigation(navigation) {
-  const active = navigation.pages.filter((page) => page.enabled !== false && page.menu !== false);
+const isPageEnabled = (page, data) => page.enabled !== false && data[page.type]?.pageActive !== false;
+
+function renderNavigation(navigation, data) {
+  const active = navigation.pages.filter((page) => isPageEnabled(page, data) && page.menu !== false);
   $("#main-nav").innerHTML = active.map((page) => `<a class="nav-link" href="#${escapeHTML(page.id)}">${escapeHTML(page.label)}</a>`).join("");
   return active;
 }
@@ -77,8 +82,21 @@ function renderClinic(page, data, settings) {
 
 function renderServices(page, data, settings) {
   const s = data.services;
-  const cards = s.items.filter((item) => item.enabled !== false).map((item, index) => `<article class="service-card reveal reveal-delay-${index % 4}"><div class="service-image"><img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.imageAlt || item.title)}" loading="lazy"/><span class="service-number">${String(index + 1).padStart(2, "0")}</span></div><div class="service-body"><h3>${escapeHTML(item.title)}</h3><p>${escapeHTML(item.description)}</p><a class="text-link" href="${escapeHTML(waUrl(settings, `${s.whatsappMessage} ${item.title}.`))}" target="_blank" rel="noopener noreferrer">${escapeHTML(s.buttonLabel)}</a></div></article>`).join("");
-  return sectionShell(page, `<div class="section-heading center services-heading"><p class="eyebrow">${escapeHTML(s.eyebrow)}</p><h2 class="services-title">${escapeHTML(s.title)} <span class="gold-text">${escapeHTML(s.titleAccent)}</span></h2><p class="lead">${escapeHTML(s.description)}</p></div><div class="service-grid">${cards || `<div class="empty-state">${escapeHTML(s.emptyMessage)}</div>`}</div>`);
+  const activeItems = s.items.filter((item) => item.enabled !== false);
+  const groupedItems = activeItems.reduce((groups, item) => {
+    const category = item.category || "Outros cuidados";
+    (groups[category] ||= []).push(item);
+    return groups;
+  }, {});
+  let itemNumber = 0;
+  const categories = Object.entries(groupedItems).map(([category, items]) => {
+    const cards = items.map((item) => {
+      const index = itemNumber++;
+      return `<article class="service-card reveal reveal-delay-${index % 4}"><div class="service-image"><img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.imageAlt || item.title)}" loading="lazy"/><span class="service-number">${String(index + 1).padStart(2, "0")}</span></div><div class="service-body"><h4>${escapeHTML(item.title)}</h4><p>${escapeHTML(item.description)}</p><a class="text-link" href="${escapeHTML(waUrl(settings, `${s.whatsappMessage} ${item.title}.`))}" target="_blank" rel="noopener noreferrer">${escapeHTML(s.buttonLabel)}</a></div></article>`;
+    }).join("");
+    return `<div class="service-category"><h3 class="service-category-title">${escapeHTML(category)}</h3><div class="service-grid">${cards}</div></div>`;
+  }).join("");
+  return sectionShell(page, `<div class="section-heading center services-heading"><p class="eyebrow">${escapeHTML(s.eyebrow)}</p><h2 class="services-title">${escapeHTML(s.title)} <span class="gold-text">${escapeHTML(s.titleAccent)}</span></h2><p class="lead">${escapeHTML(s.description)}</p></div>${categories || `<div class="empty-state">${escapeHTML(s.emptyMessage)}</div>`}`);
 }
 
 function renderModels(page, data, settings) {
@@ -365,9 +383,9 @@ async function init() {
       window.setTimeout(() => whatsappPrompt.remove(), 350);
     };
     $("[data-whatsapp-prompt-dismiss]")?.addEventListener("click", dismissWhatsAppPrompt);
-    const pages = renderNavigation(data.navigation);
+    const pages = renderNavigation(data.navigation, data);
     const renderers = { home: renderHome, about: renderAbout, clinic: renderClinic, services: renderServices, models: renderModels, products: renderProducts, contact: renderContact, custom: renderCustom };
-    const visiblePages = data.navigation.pages.filter((page) => page.enabled !== false);
+    const visiblePages = data.navigation.pages.filter((page) => isPageEnabled(page, data));
     $("#page-content").innerHTML = visiblePages.map((page) => {
       const render = renderers[page.type];
       return render ? render(page, data, settings) : sectionShell(page, `<div class="section-heading"><p class="eyebrow">${escapeHTML(page.eyebrow || settings.genericEyebrow)}</p><h2>${escapeHTML(page.title || page.label)}</h2><p class="lead">${escapeHTML(page.description || "")}</p></div>`, "soft-section");

@@ -1,6 +1,6 @@
 # Páginas e navegação
 
-Cada item cria uma seção na página e, se `menu` estiver ativo, um link no menu. Mude `enabled` para `false` para ocultar temporariamente ou remova o item. Para páginas extras, use `"type": "custom"` e os campos `title`, `description`, `paragraphs`, `image`, `imageAlt`, `buttonLabel` e `whatsappMessage`.
+Cada item cria uma seção na página e, se `menu` estiver ativo, um link no menu. Para páginas prontas, use `Ativo: sim` ou `Ativo: não` no início do arquivo correspondente (por exemplo, `products.md`). Isso oculta ou mostra a seção e o link do menu. `menu: false` oculta apenas o link. Para páginas extras, use `"type": "custom"` e controle `enabled` aqui; os campos aceitos incluem `title`, `description`, `paragraphs`, `image`, `imageAlt`, `buttonLabel` e `whatsappMessage`.
 
 ```json
 {

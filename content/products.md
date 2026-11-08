@@ -1,4 +1,5 @@
 # Produtos
+Ativo: nao
 
 Produtos e preços abaixo são fictícios, apenas para demonstrar a vitrine e medir interesse. Cada card usa `enabled`; edite, adicione ou remova itens à vontade.
 

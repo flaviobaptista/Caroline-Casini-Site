@@ -1,4 +1,5 @@
 # Início
+Ativo: sim
 
 Edite título, imagem, botões, estatísticas e chamada promocional. A promoção pode ser ocultada com `promo.enabled: false`.
 
@@ -13,7 +14,7 @@ Edite título, imagem, botões, estatísticas e chamada promocional. A promoçã
   "secondaryTarget": "sobre-mim",
   "whatsappMessage": "Olá, Caroline! Gostaria de agendar uma avaliação.",
   "note": "Atendimento acolhedor, com hora marcada.",
-  "image": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1100&q=88",
+  "image": "/img/ft1.PNG",
   "imageAlt": "Retrato feminino em luz natural, imagem ilustrativa da campanha de estética",
   "captionLabel": "Sua jornada de autocuidado",
   "caption": "Beleza com leveza e naturalidade.",
