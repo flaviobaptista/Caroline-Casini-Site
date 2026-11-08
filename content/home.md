@@ -14,7 +14,7 @@ Edite título, imagem, botões, estatísticas e chamada promocional. A promoçã
   "secondaryTarget": "sobre-mim",
   "whatsappMessage": "Olá, Caroline! Gostaria de agendar uma avaliação.",
   "note": "Atendimento acolhedor, com hora marcada.",
-  "image": "/img/ft1.PNG",
+  "image": "../img/ft1.PNG",
   "imageAlt": "Retrato feminino em luz natural, imagem ilustrativa da campanha de estética",
   "captionLabel": "Sua jornada de autocuidado",
   "caption": "Beleza com leveza e naturalidade.",

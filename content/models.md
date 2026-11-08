@@ -9,7 +9,7 @@ Exemplo inteiramente fictício para apresentar a chamada de pacientes modelo par
   "title": "Seja nossa próxima",
   "titleAccent": "paciente modelo",
   "description": "Estamos montando um portfólio demonstrativo de harmonização glútea e convidamos pessoas interessadas em participar. Cada caso depende de avaliação individual e elegibilidade profissional.",
-  "image": "/img/pexels-ganinph-7772694.jpg",
+  "image": "./img/pexels-ganinph-7772694.jpg",
   "imageAlt": "Cliente recebendo tratamento estético na região dos glúteos, imagem ilustrativa para a chamada de paciente modelo",
   "photoDisclaimer": "Seja nossa paciente modelo",
   "prices": [
