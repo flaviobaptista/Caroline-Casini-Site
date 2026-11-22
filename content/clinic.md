@@ -23,7 +23,7 @@ Descrição demonstrativa do ambiente. Troque as imagens e informações pelos d
   "imageCaption": "Seu tempo de cuidado começa aqui.",
   "carolineSpotlight": {
     "enabled": true,
-    "image": "./img/profissional/IMG_6518.png",
+    "image": "../img/profissional/IMG_6518.PNG",
     "imageAlt": "Caroline Casini em retrato profissional no consultório",
     "eyebrow": "Quem cuida de você",
     "title": "Acolhimento em cada etapa",
