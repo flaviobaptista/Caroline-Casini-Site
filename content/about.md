@@ -23,7 +23,7 @@ O texto biográfico fornecido pela Caroline. Altere os parágrafos como texto no
     "Formação complementar em Enfermagem do Trabalho"
   ],
   "closing": "Será um prazer fazer parte da sua jornada de autocuidado.",
-  "image": "../img/IMG_6511.JPG.jpeg",
+  "image": "./img/IMG_6511.JPG.jpeg",
   "imageAlt": "Retrato ilustrativo de uma profissional da estética",
   "imageCaption": "Caroline Casini",
   "gallery": {
