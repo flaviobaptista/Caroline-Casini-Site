@@ -53,7 +53,11 @@ function sectionShell(page, content, classes = "") {
 
 function renderHome(page, data, settings) {
   const h = data.home;
-  const hero = `<section class="section hero" id="${escapeHTML(page.id)}" data-page-type="home"><div class="section-inner hero-grid">
+  const hasCover = Boolean(h.coverImage);
+  const contentId = hasCover ? `${page.id}-conteudo` : page.id;
+  const coverTargetId = String(h.coverButtonTarget || "procedimentos").replace(/^#/, "");
+  const cover = hasCover ? `<section class="luxury-cover" id="${escapeHTML(page.id)}" data-page-type="home" aria-label="Apresentação de Caroline Casini"><div class="luxury-cover-frame"><div class="luxury-cover-portrait"><img src="${escapeHTML(h.coverImage)}" alt="${escapeHTML(h.coverImageAlt || "Caroline Casini em retrato profissional")}" fetchpriority="high" decoding="async"/></div></div><div class="luxury-cover-inner"><div class="luxury-cover-copy reveal"><p class="eyebrow">${escapeHTML(h.coverEyebrow || "Clínica de Estética")}</p><p class="luxury-cover-title">${escapeHTML(h.coverTitle || "Caroline")} <span class="gold-text">${escapeHTML(h.coverTitleAccent || "Casini")}</span></p><p class="luxury-cover-role">${escapeHTML(h.coverRole || "Enfermeira Esteta")}</p><p class="luxury-cover-description">${escapeHTML(h.coverDescription || "Cuidado, ciência e beleza em harmonia.")}</p>${cta(h.coverButtonLabel || "Conheça meu trabalho", `#${coverTargetId}`, "button-quiet")}</div></div></section>` : "";
+  const hero = `<section class="section hero" id="${escapeHTML(contentId)}"${hasCover ? "" : ' data-page-type="home"'}><div class="section-inner hero-grid">
     <div class="hero-copy"><p class="eyebrow">${escapeHTML(h.eyebrow)}</p><h1>${escapeHTML(h.title)} <span class="gold-text">${escapeHTML(h.titleAccent)}</span></h1><p class="lead">${escapeHTML(h.description)}</p>
       <div class="hero-buttons">${cta(h.primaryLabel, waUrl(settings, h.whatsappMessage))}${cta(h.secondaryLabel, `#${h.secondaryTarget}`, "button-quiet")}</div>
       <p class="hero-note">${escapeHTML(h.note)}</p>
@@ -62,7 +66,7 @@ function renderHome(page, data, settings) {
     <div class="hero-visual"><div class="hero-orbit"></div><div class="hero-decoration"></div><div class="hero-photo-wrap"><img class="hero-photo" src="${escapeHTML(h.image)}" alt="${escapeHTML(h.imageAlt)}" fetchpriority="high" /></div><div class="hero-caption"><span>${escapeHTML(h.captionLabel)}</span><strong>${escapeHTML(h.caption)}</strong></div></div>
   </div></section>`;
   const promo = data.home.promo.enabled ? `<section class="section"><div class="section-inner"><div class="promo-band reveal"><div class="promo-content"><div><p class="eyebrow">${escapeHTML(h.promo.eyebrow)}</p><h2>${escapeHTML(h.promo.title)}</h2><p>${escapeHTML(h.promo.description)}</p></div>${cta(h.promo.buttonLabel, waUrl(settings, h.promo.whatsappMessage), "button-quiet")}</div></div></div></section>` : "";
-  return hero + promo;
+  return cover + hero + promo;
 }
 
 function renderAbout(page, data, settings) {
@@ -70,14 +74,18 @@ function renderAbout(page, data, settings) {
   const copy = `<div class="split-copy reveal"><p class="eyebrow">${escapeHTML(a.eyebrow)}</p><h2>${escapeHTML(a.title)} <span class="gold-text">${escapeHTML(a.titleAccent)}</span></h2><p class="lead">${escapeHTML(a.subtitle)}</p><div class="body-copy">${richText(a.paragraphs)}</div>
     <ul class="credential-list">${a.credentials.map((item) => `<li>${escapeHTML(item)}</li>`).join("")}</ul><p class="body-copy">${escapeHTML(a.closing)}</p>${cta(a.buttonLabel, waUrl(settings, a.whatsappMessage))}</div>`;
   const image = `<div class="editorial-image reveal reveal-delay-1"><img src="${escapeHTML(a.image)}" alt="${escapeHTML(a.imageAlt)}" loading="lazy"/><div class="image-label">${escapeHTML(a.imageCaption)}</div></div>`;
-  return sectionShell(page, `<div class="split-layout">${image}${copy}</div>`);
+  const galleryPhotos = (a.gallery?.photos || []).filter((photo) => photo.enabled !== false);
+  const gallery = a.gallery?.enabled !== false && galleryPhotos.length ? `<div class="about-gallery"><div class="about-gallery-grid">${galleryPhotos.map((photo, index) => `<figure class="about-gallery-card reveal reveal-delay-${index % 4}"><div class="about-gallery-image"><img src="${escapeHTML(photo.image)}" alt="${escapeHTML(photo.alt || "Caroline Casini")}" loading="lazy" decoding="async"/></div></figure>`).join("")}</div></div>` : "";
+  return sectionShell(page, `<div class="split-layout">${image}${copy}</div>${gallery}`);
 }
 
 function renderClinic(page, data, settings) {
   const c = data.clinic;
   const copy = `<div class="split-copy reveal"><p class="eyebrow">${escapeHTML(c.eyebrow)}</p><h2>${escapeHTML(c.title)} <span class="gold-text">${escapeHTML(c.titleAccent)}</span></h2><div class="body-copy">${richText(c.paragraphs)}</div><div class="clinic-features">${c.features.map((feature) => `<article class="feature-card"><span>${escapeHTML(feature.number)}</span><strong>${escapeHTML(feature.title)}</strong><p>${escapeHTML(feature.description)}</p></article>`).join("")}</div><div style="margin-top:26px">${cta(c.buttonLabel, waUrl(settings, c.whatsappMessage))}</div></div>`;
   const image = `<div class="editorial-image reveal reveal-delay-1"><img src="${escapeHTML(c.image)}" alt="${escapeHTML(c.imageAlt)}" loading="lazy"/><div class="image-label">${escapeHTML(c.imageCaption)}</div></div>`;
-  return sectionShell(page, `<div class="split-layout reverse">${copy}${image}</div>`, "soft-section");
+  const p = c.carolineSpotlight;
+  const spotlight = p?.enabled === false ? "" : `<aside class="clinic-profile-spotlight reveal"><div class="clinic-profile-image"><img src="${escapeHTML(p?.image || "./img/profissional/caroline-no-consultorio.jpg")}" alt="${escapeHTML(p?.imageAlt || "Caroline Casini em retrato profissional")}" loading="lazy" decoding="async"/></div><div class="clinic-profile-copy"><p class="eyebrow">${escapeHTML(p?.eyebrow || "Quem cuida de você")}</p><h3>${escapeHTML(p?.title || "Acolhimento em cada etapa")}</h3><p>${escapeHTML(p?.description || "Cuidado com ciência, escuta e atenção à sua individualidade.")}</p></div></aside>`;
+  return sectionShell(page, `<div class="split-layout reverse">${copy}${image}</div>${spotlight}`, "soft-section");
 }
 
 function renderServices(page, data, settings) {

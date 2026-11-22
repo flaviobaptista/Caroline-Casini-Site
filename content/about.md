@@ -23,9 +23,34 @@ O texto biográfico fornecido pela Caroline. Altere os parágrafos como texto no
     "Formação complementar em Enfermagem do Trabalho"
   ],
   "closing": "Será um prazer fazer parte da sua jornada de autocuidado.",
-  "image": "./img/ft2.png",
+  "image": "../img/IMG_6511.JPG.jpeg",
   "imageAlt": "Retrato ilustrativo de uma profissional da estética",
   "imageCaption": "Caroline Casini",
+  "gallery": {
+    "enabled": true,
+    "photos": [
+      {
+        "enabled": true,
+        "image": "./img/profissional/IMG_6450.JPG.jpeg",
+        "alt": "Caroline Casini em retrato profissional sentada, com roupa preta"
+      },
+      {
+        "enabled": true,
+        "image": "./img/profissional/IMG_6476.JPG.jpeg",
+        "alt": "Caroline Casini em seu ambiente de trabalho, usando blazer terracota"
+      },
+      {
+        "enabled": true,
+        "image": "./img/profissional/IMG_6479.JPG.jpeg",
+        "alt": "Retrato lateral de Caroline Casini em uma poltrona rosa"
+      },
+      {
+        "enabled": true,
+        "image": "./img/profissional/IMG_6481.JPG.jpeg",
+        "alt": "Caroline Casini sorrindo em retrato profissional"
+      }
+    ]
+  },
   "buttonLabel": "Vamos conversar",
   "whatsappMessage": "Olá, Caroline! Li um pouco sobre seu trabalho e gostaria de conversar."
 }

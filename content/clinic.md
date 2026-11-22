@@ -18,9 +18,17 @@ Descrição demonstrativa do ambiente. Troque as imagens e informações pelos d
     { "number": "02", "title": "Ambiente acolhedor", "description": "Conforto e privacidade em cada visita." },
     { "number": "03", "title": "Cuidado responsável", "description": "Informação clara antes de cada escolha." }
   ],
-  "image": "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1100&q=85",
+  "image": "./img/IMG_6527.JPG.jpeg",
   "imageAlt": "Ambiente de spa com iluminação acolhedora, referência ilustrativa para a clínica",
   "imageCaption": "Seu tempo de cuidado começa aqui.",
+  "carolineSpotlight": {
+    "enabled": true,
+    "image": "./img/profissional/caroline-no-consultorio.jpg",
+    "imageAlt": "Caroline Casini em retrato profissional no consultório",
+    "eyebrow": "Quem cuida de você",
+    "title": "Acolhimento em cada etapa",
+    "description": "Caroline une conhecimento, escuta e sensibilidade para que cada atendimento seja pensado com atenção à sua individualidade."
+  },
   "buttonLabel": "Agendar uma visita",
   "whatsappMessage": "Olá! Gostaria de conhecer o espaço da clínica."
 }

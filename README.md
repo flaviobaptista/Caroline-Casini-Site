@@ -21,8 +21,8 @@ Cada arquivo de `content/` é Markdown com um bloco cercado por ```` ```json ```
 | `settings.md` | Nome, WhatsApp, telefone, e-mail, endereço, mapa e redes sociais |
 | `navigation.md` | Ordem, nomes e ativação das seções |
 | `home.md` | Página inicial, foto, chamadas, números e faixa de promoção |
-| `about.md` | Biografia e formação da Caroline |
-| `clinic.md` | Apresentação demonstrativa do espaço |
+| `about.md` | Biografia, formação e galeria de fotos da Caroline |
+| `clinic.md` | Apresentação demonstrativa do espaço e destaque profissional da Caroline |
 | `services.md` | Procedimentos, descrições e imagens |
 | `models.md` | Chamada demonstrativa para paciente modelo e valores de exemplo |
 | `products.md` | Vitrine, preços e produtos de exemplo |
@@ -36,7 +36,7 @@ Cada arquivo de `content/` é Markdown com um bloco cercado por ```` ```json ```
 - Em `services.md`, `products.md` e `settings.md` (redes sociais), cada item também pode ser ocultado com `"enabled": false`. Exclua o objeto inteiro para removê-lo.
 - Para adicionar um serviço ou produto, copie um objeto existente dentro do respectivo array `items`, altere seus campos e mantenha a vírgula entre os objetos.
 - Para adicionar uma seção nova, acrescente em `navigation.md` um objeto com `id` único e sem espaços (por exemplo, `duvidas`), `label`, `type: "custom"`, `enabled: true` e `menu: true`. Acrescente `title`, `description`, `paragraphs` (lista de textos) e, se quiser, `image`, `imageAlt`, `buttonLabel` e `whatsappMessage` no mesmo objeto. `softBackground: true` dá fundo suave à seção.
-- Para trocar fotos por arquivos próprios, coloque as imagens em `assets/` e informe um caminho relativo como `assets/caroline.jpg` no campo `image`. Também pode usar um endereço completo de imagem hospedado.
+- Para incluir fotos profissionais, coloque os arquivos em `img/profissional/` e informe caminhos como `./img/profissional/IMG_6451.JPG.jpeg` no Markdown. Em `about.md`, edite `gallery.photos`; use `enabled: false` para ocultar uma foto sem removê-la da pasta. A capa editorial antes do início pode ser alterada em `home.md` pelo campo `coverImage`. O retrato da seção da clínica fica em `clinic.md`, no objeto `carolineSpotlight`. Também pode usar um endereço completo de imagem hospedado.
 
 ## Personalizar tema e contatos
 
